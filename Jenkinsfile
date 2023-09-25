@@ -9,7 +9,9 @@ pipeline {
             steps {
                 script {
                     env.SONAR_TOKEN = SONAR_TOKEN
+                    
                     sh """
+                        chmod +x mvnw
                         ./mvnw sonar:sonar \\
                         -Dsonar.projectKey=devops-projectslabs_pet-clinic-application \\
                         -Dsonar.organization=devops-projectslabs \\
