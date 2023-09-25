@@ -11,7 +11,7 @@ pipeline {
                     env.SONAR_TOKEN = SONAR_TOKEN
                     sh """
                         ./mvnw sonar:sonar \\
-                        -Dsonar.projectKey=devops-projectslabs_pet-clinic-app-cicd-pipeline \\
+                        -Dsonar.projectKey=devops-projectslabs_pet-clinic-application \\
                         -Dsonar.organization=devops-projectslabs \\
                         -Dsonar.host.url=https://sonarcloud.io \\
                         -Dsonar.login=\${SONAR_TOKEN}
