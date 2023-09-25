@@ -8,7 +8,7 @@ pipeline {
         stage('Pet clinic build using Maven') {
             steps {
                 script {
-                    sh "chmod +x maven"
+                    sh "chmod +x mvnw"
                     sh "./mvnw clean install"
                 }
             }
