@@ -16,7 +16,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 script {
-                    def lowercaseRepoName = "testingkyaw/${JOB_NAME}".toLowerCase()
+                    def lowercaseRepoName = "testingkyaw/pet-clinic".toLowerCase()
                     def lowercaseTag = "v1.${BUILD_ID}".toLowerCase()
                     def latestTag = "latest"
                     sh "docker build -t ${lowercaseRepoName}:${lowercaseTag} ."
