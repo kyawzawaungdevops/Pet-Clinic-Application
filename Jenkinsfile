@@ -19,8 +19,8 @@ pipeline {
                     def lowercaseRepoName = "testingkyaw/pet-clinic".toLowerCase()
                     def lowercaseTag = "v1.${BUILD_ID}".toLowerCase()
                     def latestTag = "latest"
-                    sh "sudo docker build -t ${lowercaseRepoName}:${lowercaseTag} ."
-                    sh "sudo docker build -t ${lowercaseRepoName}:${latestTag} ."
+                    sh "docker build -t ${lowercaseRepoName}:${lowercaseTag} ."
+                    sh "docker build -t ${lowercaseRepoName}:${latestTag} ."
                 }
             }
         }
@@ -32,9 +32,9 @@ pipeline {
                         def lowercaseRepoName = "testingkyaw/${JOB_NAME}".toLowerCase()
                         def lowercaseTag = "v1.${BUILD_ID}".toLowerCase()
                         def latestTag = "latest"
-                        sh "sudo docker login -u testingkyaw -p \${Docker_Password}"
-                        sh "sudo docker push ${lowercaseRepoName}:${lowercaseTag}"
-                        sh "sudo docker push ${lowercaseRepoName}:${latestTag}"
+                        sh "docker login -u testingkyaw -p \${Docker_Password}"
+                        sh "docker push ${lowercaseRepoName}:${lowercaseTag}"
+                        sh "docker push ${lowercaseRepoName}:${latestTag}"
                     }
                 }
             }
