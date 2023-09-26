@@ -16,7 +16,7 @@ pipeline {
         stage('Build Docker image') {
             steps {
                 script {
-                    def lowercaseRepoName = "testingkyaw/pet-clinic".toLowerCase()
+                    def lowercaseRepoName = "testingkyaw/${JOB_NAME}".toLowerCase()
                     def lowercaseTag = "v1.${BUILD_ID}".toLowerCase()
                     def latestTag = "latest"
                     sh "docker build -t ${lowercaseRepoName}:${lowercaseTag} ."
@@ -29,9 +29,9 @@ pipeline {
                 withCredentials([string(credentialsId: 'Docker_Password', variable: 'Docker_Password')]) {
                     script {
                         // Convert the repository name and tag to lowercase
-                        def lowercaseRepoName = "testingkyaw/${JOB_NAME}".toLowerCase()
-                        def lowercaseTag = "v1.${BUILD_ID}".toLowerCase()
-                        def latestTag = "latest"
+                        //def lowercaseRepoName = "testingkyaw/${JOB_NAME}".toLowerCase()
+                        //def lowercaseTag = "v1.${BUILD_ID}".toLowerCase()
+                        //def latestTag = "latest"
                         sh "docker login -u testingkyaw -p \${Docker_Password}"
                         sh "docker push ${lowercaseRepoName}:${lowercaseTag}"
                         sh "docker push ${lowercaseRepoName}:${latestTag}"
