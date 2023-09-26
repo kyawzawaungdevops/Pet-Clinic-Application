@@ -24,17 +24,17 @@ pipeline {
                 }
             }
         }
-        stage('Push Docker image to Docker Hub') {
+    stage('Push Docker image to Docker Hub') {
             steps {
                 withCredentials([string(credentialsId: 'Docker_Password', variable: 'Docker_Password')]) {
                     script {
-                        // Convert the repository name and tag to lowercase
-                        //def lowercaseRepoName = "testingkyaw/${JOB_NAME}".toLowerCase()
-                        //def lowercaseTag = "v1.${BUILD_ID}".toLowerCase()
-                        //def latestTag = "latest"
-                        sh "docker login -u testingkyaw -p \${Docker_Password}"
-                        sh "docker push ${lowercaseRepoName}:${lowercaseTag}"
-                        sh "docker push ${lowercaseRepoName}:${latestTag}"
+                        def lowercaseRepoName = "testingkyaw/${JOB_NAME}".toLowerCase()
+                        def lowercaseTag = "v1.${BUILD_ID}".toLowerCase()
+                        def latestTag = "latest"
+                        echo "Docker_Password" | docker login -u testingkyaw --password-stdin
+                        docker push ${lowercaseRepoName}:${lowercaseTag}
+                        docker push ${lowercaseRepoName}:${latestTag}
+                            
                     }
                 }
             }
