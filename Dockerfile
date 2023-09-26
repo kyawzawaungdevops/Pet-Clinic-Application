@@ -3,7 +3,7 @@ FROM openjdk:22-jdk-bullseye
 RUN mkdir -p /home/app
 
 WORKDIR /home/app
-COPY ./spring-petclinic-3.1.0-SNAPSHOT.jar /home/app
+COPY ./target/spring-petclinic-3.1.0-SNAPSHOT.jar /home/app
 
 EXPOSE 8080
 
